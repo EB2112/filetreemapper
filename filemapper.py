@@ -1,23 +1,26 @@
 import os
 from colorama import init
-from termcolor import colored
+#from termcolor import colored
+
+
 
 init()
 
 file_tree = ""
 
 path = "C:/Users/ezenb/Projects/python/filetree/testfolder"
-parent_directory = "<" + os.path.basename(path) +">"
+#path=r"C:\Users\ezenb\Projects\python\filetree"
+#parent_directory = "<" + os.path.basename(path) +">"
 
 def scan_directory_recursive(path, depth=0):
     global file_tree
     for x in os.scandir(path):
         
         if x.is_dir():
-            file_tree += colored( " " * depth +  f"<{x.name}>\n", text_color(depth))
-            scan_directory_recursive(x.path, depth + 2)
+            file_tree +=  " " * depth +  f"<{x.name}>\n"
+            scan_directory_recursive(x.path, depth + 4)
         else:
-                file_tree += colored(" " * depth +  f"--{x.name}\n", text_color(depth))
+                file_tree += " " * depth +  f"--{x.name}\n"
                 #print(x.path)
     
 
@@ -36,7 +39,7 @@ def text_color(depth):
 
 
 scan_directory_recursive(path)
-print(colored(parent_directory, "yellow" )+"\n"+ file_tree)
+#print (parent_directory+"\n"+ file_tree)
 
 def scan_directory(path):
     global file_tree

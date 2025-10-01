@@ -1,2 +1,3 @@
 venv/
 testfolder/
+__pycache__/
